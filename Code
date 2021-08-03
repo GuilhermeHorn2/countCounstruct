@@ -1,0 +1,25 @@
+
+def f(n,l):
+    if n == '':
+        return 1
+    p = 0
+    for i in l:
+        if i in n and n.index(i) == 0:
+            a = n.replace(i,'')
+            k = f(a, l)
+            p += k
+    return p
+
+def mf(n,l,memo={}):
+    if n in memo:
+        return memo[n]
+    if n == '':
+        return 1
+    p = 0
+    for i in l:
+        if i in n and n.index(i) == 0:
+            a = n.replace(i,'')
+            k = mf(a, l)
+            p += k
+    memo[n] = p
+    return p
